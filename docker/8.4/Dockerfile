@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 LABEL maintainer="Taylor Otwell"
 
-ARG WWWGROUP
+ARG WWWGROUP=1000
 ARG NODE_VERSION=22
 ARG MYSQL_CLIENT="mysql-client"
 
@@ -14,14 +14,16 @@ ENV SUPERVISOR_PHP_COMMAND="/usr/bin/php -d variables_order=EGPCS /var/www/html/
 ENV SUPERVISOR_PHP_USER="sail"
 ENV PLAYWRIGHT_BROWSERS_PATH=0
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-RUN echo "Acquire::http::Pipeline-Depth 0;" > /etc/apt/apt.conf.d/99custom \
+# ---------------------------
+# Timezone e APT
+# ---------------------------
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+ && echo "Acquire::http::Pipeline-Depth 0;" > /etc/apt/apt.conf.d/99custom \
  && echo "Acquire::http::No-Cache true;" >> /etc/apt/apt.conf.d/99custom \
  && echo "Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99custom
 
 # ---------------------------
-# Pacotes essenciais + PHP 8.4 + Swoole + gosu
+# Pacotes essenciais + PHP + Swoole + gosu
 # ---------------------------
 RUN apt-get update && apt-get install -y \
       gnupg curl ca-certificates zip unzip git nano libpng-dev libcap2-bin supervisor \
@@ -73,19 +75,34 @@ RUN userdel -r ubuntu || true
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
-COPY start-container /usr/local/bin/start-container
+# ---------------------------
+# Permissões Laravel
+# ---------------------------
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chown -R sail:$WWWGROUP /var/www/html \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# ---------------------------
+# Supervisor e PHP
+# ---------------------------
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
-RUN chmod +x /usr/local/bin/start-container
 
-EXPOSE 80/tcp
+# ---------------------------
+# Copiar projeto e scripts
+# ---------------------------
+COPY . .
+RUN chown -R sail:$WWWGROUP /var/www/html
 
-# Copia o entrypoint
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+COPY start-container.sh /usr/local/bin/start-container.sh
+RUN chmod +x /usr/local/bin/start-container.sh
 
-# Expõe a porta do Octane
-EXPOSE 8000
+# ---------------------------
+# Portas expostas
+# ---------------------------
+EXPOSE 8000 5173
 
-# Define o entrypoint
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# ---------------------------
+# CMD final
+# ---------------------------
+CMD ["/usr/local/bin/start-container.sh"]

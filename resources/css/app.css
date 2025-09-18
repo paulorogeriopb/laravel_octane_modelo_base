@@ -1,37 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Suas variáveis globais */
 :root {
-    --cor-padrao: #32a2b9;
-    --cor-primary: #32a2b9;
-    --cor-primary-secondary: #298ba1;
-    --cor-dark-primary: #1d232a;
-    --cor-dark-secondary: #191e24;
-    --cor-dark-tertiary: #14191f;
-    --cor-light-primary: #f4f6f9;
-    --cor-light-secondary: #ebeef4;
-    --cor-light-tertiary: #d8dee9;
-    --cor-success: #45b977;
-    --cor-success-secondary: #3fa56e;
-    --cor-info: #60bbcd;
-    --cor-info-secondary: #4ab3c6;
-    --cor-warning: #dfa300;
-    --cor-warning-secondary: #c18f00;
-    --cor-danger: #dd4c6a;
-    --cor-danger-secondary: #b43c54;
-    --cor-sombra: #191e24;
-    --cor-table-header: #15191e;
-    --color-athens-gray-400: #a0aec0;
-    --cor-table-hover: #15191e;
-    --cor-table-line: #323d48;
-    --cor-claro: #4ab3c6;
-    --cor-escuro: #276377;
+    --font-sans: "Figtree", sans-serif;
+    --default: #298ba1;
+    --default-secondary: #32a2b9;
+
+    --dark-primary: #1d232a;
+    --dark-secondary: #191e24;
+    --dark-tertiary: #14191f;
+
+    --light-primary: #f4f6f9;
+    --light-secondary: #ebeef4;
+    --light-tertiary: #d8dee9;
+
+    --text-primary: #1375c0;
+    --primary: #188ae2;
+    --primary-secondary: #dcedfb;
+
+    --text-secondary: #4d59a0;
+    --secondary: #5b69bc;
+    --secondary-secondary: #e6e9f5;
+
+    --text-success: #4fab5a;
+    --success: #5cc66a;
+    --success-secondary: #dbf6e9;
+
+    --text-danger: #db4d52;
+    --danger: #f2585a;
+    --danger-secondary: #fce6e6;
+
+    --text-warning: #dcab45;
+    --warning: #f9c851;
+    --warning-secondary: #fef7e5;
+
+    --text-info: #2dabdb;
+    --info: #35b8e0;
+    --info-secondary: #e1f4fa;
+
+    --text-light: #8a9ebb;
+    --alert-light: #eef2f7;
+    --alert-light-secondary: #fbfbfd;
+
+    --text-dark: #343a40;
+    --alert-dark: #313a46;
+    --alert-dark-secondary: #ced4da;
+
+    --sombra: #1b2026;
+    --borda: #313a46;
 }
 
 @layer components {
@@ -39,15 +57,15 @@
         @apply text-2xl;
     }
     .bg-login {
-        @apply min-h-screen flex flex-col justify-center items-center bg-(--cor-light-secondary) dark:bg-(--cor-dark-secondary);
+        @apply min-h-screen flex flex-col justify-center items-center bg-(--light-secondary) dark:bg-(--dark-secondary);
     }
 
     .card-login {
-        @apply mt-6 w-full overflow-hidden px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary);
+        @apply mt-6 w-full overflow-hidden px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg bg-(--light-primary) dark:bg-(--dark-primary);
     }
 
     .logo-wrapper-login {
-        @apply flex justify-center mb-4;
+        @apply flex justify-center mb-2 mt-4;
     }
 
     .logo-login {
@@ -55,11 +73,15 @@
     }
 
     .title-logo {
-        @apply text-4xl font-semibold text-center text-(--cor-padrao);
+        @apply text-4xl font-semibold text-center text-(--default)  text-shadow-md;
     }
 
     .title-login {
-        @apply text-2xl font-semibold text-center text-gray-600 dark:text-gray-400;
+        @apply text-xl font-medium text-center text-gray-600 mb-3;
+    }
+
+    .subtitle-login {
+        @apply text-center text-gray-600 mb-4 dark:text-gray-300;
     }
 
     .form-group-login {
@@ -70,21 +92,21 @@
         @apply mt-4 flex items-center justify-between;
     }
 
-    .link-padrao {
-        @apply text-base hover:no-underline text-(--cor-escuro) dark:text-(--cor-claro);
+    .link-default {
+        @apply text-base hover:text-(--dark-primary)  text-(--default);
     }
 
     .bg-dashboard {
-        @apply bg-(--cor-light-secondary) dark:bg-(--cor-dark-secondary);
+        @apply bg-(--light-secondary) dark:bg-(--dark-secondary);
     }
 
     .navbar {
-        @apply bg-(--cor-light-secondary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
-            dark:bg-(--cor-dark-primary) dark:border-(--cor-sombra);
+        @apply bg-(--light-secondary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
+            dark:bg-(--dark-primary) dark:border-(--sombra);
     }
 
     .menu-button {
-        @apply lg:hidden cursor-pointer text-(--cor-primary) ms-4 mt-1;
+        @apply lg:hidden cursor-pointer text-(--primary) ms-4 mt-1;
     }
 
     .navbar-container {
@@ -96,7 +118,7 @@
     }
 
     .dropdown-button {
-        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary) dark:text-gray-400;
+        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-400;
     }
 
     .dropdown-icon {
@@ -105,7 +127,7 @@
 
     /* Sidebar base (fechada) */
     .sidebar {
-        @apply fixed top-0 left-0 w-64 h-screen bg-white dark:bg-(--cor-dark-primary) shadow-md
+        @apply fixed top-0 left-0 w-64 h-screen bg-white dark:bg-(--dark-primary) shadow-md
            z-40 transform -translate-x-full opacity-0 pointer-events-none
            transition-all duration-300 ease-in-out;
     }
@@ -135,7 +157,7 @@
 
     /* Container e botão mantém seu estilo */
     .sidebar-container {
-        @apply relative h-full bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary);
+        @apply relative h-full bg-(--light-secondary) dark:bg-(--dark-primary);
     }
 
     .sidebar-close-button {
@@ -143,11 +165,11 @@
     }
 
     .sidebar-header {
-        @apply flex items-center space-x-2 pl-4 py-3 pt-4 dark:bg-(--cor-dark-primary);
+        @apply flex items-center space-x-2 pl-4 py-3 pt-4 dark:bg-(--dark-primary);
     }
 
     .sidebar-title {
-        @apply text-xl font-bold text-(--cor-padrao);
+        @apply text-xl font-bold text-(--default);
     }
 
     .sidebar-nav {
@@ -155,9 +177,9 @@
     }
 
     .sidebar-link {
-        @apply relative flex items-center space-x-3 px-5 py-3 text-sm text-gray-600
-               dark:text-gray-400 border-b border-gray-200 dark:border-(--cor-sombra)
-               font-light;
+        @apply px-4 py-3 text-sm text-gray-500 border-b-1 border-gray-200
+      dark:border-(--sombra)  hover:bg-gray-200 hover:text-(--default) flex items-center
+      space-x-1 dark:text-gray-400 dark:hover:bg-(--dark-secondary) dark:hover:text-(--default);
     }
 
     .sidebar-link::before {
@@ -168,11 +190,12 @@
 
     .sidebar-link:hover,
     .sidebar-link:focus {
-        @apply text-(--cor-padrao)  shadow-sm rounded-r-md bg-(--cor-light-secondary) dark:shadow-sm dark:bg-(--cor-sombra);
+        @apply text-(--default)  shadow-sm rounded-r-md bg-(--light-secondary) dark:shadow-sm dark:bg-(--sombra);
     }
 
     .sidebar-link.active {
-        @apply bg-(--cor-light-secondary) font-normal dark:bg-(--cor-dark-secondary) text-(--cor-padrao) dark:shadow-md shadow-sm rounded-r-md;
+        @apply bg-gray-200 text-(--default) dark:bg-(--dark-secondary) dark:text-(--default)
+     shadow-xs;
     }
 
     .size-5 {
@@ -195,20 +218,17 @@
         @apply text-xl font-semibold text-gray-500 dark:text-gray-400;
     }
 
-    .link-padrao {
-        @apply text-base hover:no-underline text-(--cor-escuro) dark:text-(--cor-claro);
-    }
-
     .breadcrumb {
-        @apply text-sm text-gray-400 dark:text-gray-600;
+        @apply text-sm text-gray-500 dark:text-gray-400;
     }
 
     .link-breadcrumb {
-        @apply text-sm hover:underline text-(--cor-escuro) dark:text-(--cor-claro);
+        @apply text-gray-400 hover:no-underline hover:text-(--dark-secondary)
+      dark:hover:text-(--light-primary);
     }
 
     .content-box {
-        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary) dark:text-gray-200;
+        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-200;
     }
 
     .box {
@@ -216,7 +236,7 @@
     }
 
     .content-box-header {
-        @apply flex justify-between items-center border-b-2 pb-2 mb-3 border-gray-200 dark:border-(--cor-sombra);
+        @apply flex justify-between items-center border-b-2 pb-2 mb-3 border-gray-200 dark:border-(--sombra);
     }
 
     .content-box-title {
@@ -232,19 +252,19 @@
     }
 
     .table-container {
-        @apply overflow-hidden shadow-sm bg-white dark:bg-(--cor-dark-secondary) border border-gray-200 dark:border-(--cor-sombra);
+        @apply overflow-hidden shadow-sm bg-white dark:bg-(--dark-secondary) border border-gray-200 dark:border-(--sombra);
     }
 
     .table {
-        @apply min-w-full divide-y divide-gray-200 border-separate border-spacing-0 dark:border-(--cor-sombra);
+        @apply min-w-full divide-y divide-gray-200 border-separate border-spacing-0 dark:border-(--sombra);
     }
 
     .table-row-header {
-        @apply bg-(--cor-light-secondary) dark:bg-(--cor-dark-tertiary);
+        @apply bg-(--light-secondary) dark:bg-(--dark-tertiary);
     }
 
     .table-header {
-        @apply px-6 py-3 text-left text-sm font-medium tracking-wider border-b border-gray-200 dark:border-(--cor-sombra)
+        @apply px-6 py-3 text-left text-sm font-medium tracking-wider border-b border-gray-200 dark:border-(--sombra)
             text-gray-500 dark:text-(--color-athens-gray-400);
     }
 
@@ -253,15 +273,15 @@
     }
 
     .table-body {
-        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--cor-sombra) text-gray-950 dark:text-(--color-athens-gray-400) break-all;
+        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--sombra) text-gray-950 dark:text-(--color-athens-gray-400) break-all;
     }
 
     .table-row-body {
-        @apply hover:bg-gray-50 dark:hover:bg-(--cor-table-hover);
+        @apply hover:bg-gray-50 dark:hover:bg-(--table-hover);
     }
 
     .table-actions {
-        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--cor-sombra) text-gray-950 dark:text-(--color-athens-gray-400)
+        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--sombra) text-gray-950 dark:text-(--color-athens-gray-400)
              justify-center items-center space-x-1 text-center table-cell;
     }
 
@@ -274,15 +294,15 @@
     }
 
     .table-zebra-light tr:nth-child(odd) {
-        @apply bg-gray-100 dark:bg-(--cor-dark-secondary);
+        @apply bg-gray-100 dark:bg-(--dark-secondary);
     }
 
     .table-zebra-light tr:nth-child(even) {
-        @apply bg-white dark:bg-(--cor-dark-tertiary);
+        @apply bg-white dark:bg-(--dark-tertiary);
     }
 
     .table-zebra-light tr:hover {
-        @apply bg-gray-200 dark:bg-(--cor-table-hover) cursor-pointer;
+        @apply bg-gray-200 dark:bg-(--table-hover) cursor-pointer;
     }
 
     .form-search {
@@ -290,12 +310,15 @@
     }
 
     .form-label {
-        @apply text-gray-500 block text-sm font-semibold dark:text-gray-400;
+        @apply text-gray-700 block text-sm font-medium dark:text-gray-400;
     }
 
     .form-input {
-        @apply block w-full mt-1 h-12 border-gray-300 rounded-md shadow-sm
-            focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500 dark:border-gray-600;
+        @apply mt-1 w-full p-3 pr-10 text-gray-600 rounded-xl border border-gray-300
+     focus:border-gray-400 dark:focus:border-gray-600 focus:ring-1 focus:ring-gray-400
+     dark:focus:ring-gray-600 focus:outline-none px-3 py-3 bg-gray-100
+     dark:border-(--borda) dark:text-gray-400 dark:bg-(--dark-secondary)
+     dark:placeholder-gray-400;
     }
 
     .form-select-sm {
@@ -303,19 +326,19 @@
              rounded-md shadow-sm
             dark:bg-gray-800 dark:text-gray-300
             bg-white text-gray-700
-            focus:border-(--cor-padrao) focus:ring focus:ring-(--cor-padrao)
+            focus:border-(--default) focus:ring focus:ring-(--default)
             transition duration-150 ease-in-out;
     }
 
     .form-textarea {
         @apply block w-full mt-1  h-40 border-gray-300 rounded-md shadow-sm
-                     focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500
+                     focus:border-(--default) focus:ring-(--default) dark:bg-gray-800 text-gray-500
                        dark:border-gray-600;
     }
 
     .form-input-md {
         @apply block text-sm text-center h-8 border-gray-300 rounded-md shadow-sm
-                     focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500
+                     focus:border-(--default) focus:ring-(--default) dark:bg-gray-800 text-gray-500
                        dark:border-gray-600;
     }
 
@@ -331,88 +354,164 @@
         @apply dark:text-gray-300;
     }
 
+    /****** Início Botões ******/
+
+    .btn-default {
+        @apply bg-(--default) text-white text-sm px-2 py-1 rounded hover:bg-(--default-secondary)
+     cursor-pointer shadow-md;
+    }
+
+    .btn-default-md {
+        @apply bg-(--default) text-white text-sm px-2 py-2 rounded hover:bg-(--default-secondary)
+     cursor-pointer shadow-md;
+    }
+
+    .btn-light {
+        @apply bg-(--light-primary) dark:bg-(--dark-primary) text-gray-500  hover:text-(--default)
+     text-sm px-2 py-2 rounded hover:bg-(--light-tertiary) dark:hover:bg-(--dark-tertiary)
+     cursor-pointer shadow-lg;
+
+        /*  @apply px-4 py-3 text-sm text-gray-500  hover:bg-gray-200 hover:text-(--default)  dark:text-gray-400 dark:hover:bg-(--dark-secondary) dark:hover:text-(--default)  cursor-pointer shadow-lg;*/
+    }
+
+    /* Botão azul */
     .btn-primary {
-        @apply inline-flex bg-(--cor-primary) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-primary-secondary);
+        @apply bg-(--primary)  text-white text-sm px-2 py-1 rounded hover:bg-(--text-primary)
+     cursor-pointer shadow-md;
     }
 
+    /* Botão azul médio */
     .btn-primary-md {
-        @apply bg-(--cor-primary) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-primary-secondary);
+        @apply bg-(--primary) text-white text-base px-2 py-2 rounded hover:bg-(--text-primary)
+     cursor-pointer shadow-md;
     }
 
+    /* Botão azul claro */
     .btn-info {
-        @apply bg-(--cor-info) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-info-secondary);
+        @apply bg-(--info) text-white text-sm px-2 py-1 rounded hover:bg-(--text-info)
+    cursor-pointer shadow-md;
     }
 
+    /* Botão verde */
     .btn-success {
-        @apply bg-(--cor-success) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-success-secondary);
+        @apply bg-(--success) text-white text-sm px-2 py-1 rounded hover:bg-(--text-success)
+    cursor-pointer shadow-md;
     }
 
+    /* Botão amarelo */
     .btn-warning {
-        @apply inline-flex bg-(--cor-warning) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-warning-secondary);
+        @apply bg-(--warning) text-white text-sm px-2 py-1 rounded hover:bg-(--text-warning)
+     cursor-pointer shadow-md;
     }
 
+    /* Botão vermelho */
     .btn-danger {
-        @apply inline-flex bg-(--cor-danger) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-             hover:bg-(--cor-danger-secondary);
+        @apply bg-(--danger) text-white text-sm px-2 py-1 rounded hover:bg-(--text-danger)
+     cursor-pointer shadow-md;
     }
 
     .btn-danger-md {
-        @apply bg-(--cor-danger) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-danger-secondary);
+        @apply bg-(--danger) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
+            hover:bg-(--danger-secondary);
     }
 
     .align-icon-btn {
         @apply flex items-center space-x-1;
     }
 
+    /****** Fim Botões ******/
+
+    /****** Início Alertas ******/
     .alert-primary {
-        @apply p-3 my-3 text-sm text-blue-800 rounded-lg bg-blue-100 border border-blue-200;
+        @apply p-3 my-3 text-sm text-(--text-primary) rounded-lg bg-(--primary-secondary);
+    }
+
+    .alert-secondary {
+        @apply p-3 my-3 text-sm text-(--text-secondary) rounded-lg bg-(--secondary-secondary);
     }
 
     .alert-info {
-        @apply p-3 my-3 text-sm text-cyan-800 rounded-lg bg-cyan-100 border border-cyan-300;
+        @apply p-3 my-3 text-sm text-(--text-info) rounded-lg bg-(--info-secondary);
     }
 
     .alert-success {
-        @apply p-3 my-3 text-sm text-green-800 rounded-lg bg-green-100 border border-green-300;
+        @apply p-3 my-3 text-sm text-(--text-success) rounded-lg bg-(--success-secondary);
     }
 
     .alert-warning {
-        @apply p-3 my-3 text-sm text-yellow-800 rounded-lg bg-yellow-100 border border-yellow-300;
+        @apply p-3 my-3 text-sm text-(--text-warning) rounded-lg bg-(--warning-secondary);
     }
 
     .alert-danger {
-        @apply p-3 my-3 text-sm text-red-800 rounded-lg bg-red-100 border border-red-200;
+        @apply p-3 my-3 text-sm text-(--text-danger) rounded-lg bg-(--danger-secondary);
     }
 
+    .alert-light {
+        @apply p-3 my-3 text-sm text-(--text-light) rounded-lg bg-(--alert-light-secondary);
+    }
+
+    .alert-dark {
+        @apply p-3 my-3 text-sm text-(--text-dark) rounded-lg bg-(--alert-dark-secondary);
+    }
+
+    /******** Cor fechada ***/
+
+    .alert-dismissible-primary {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--primary);
+    }
+
+    .alert-dismissible-secondary {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--secondary);
+    }
+
+    .alert-dismissible-info {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--info);
+    }
+
+    .alert-dismissible-success {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--success);
+    }
+
+    .alert-dismissible-warning {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--warning);
+    }
+
+    .alert-dismissible-danger {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--danger);
+    }
+
+    .alert-dismissible-light {
+        @apply p-3 my-3 text-sm text-gray-600 rounded-lg bg-(--alert-light);
+    }
+
+    .alert-dismissible-dark {
+        @apply p-3 my-3 text-sm text-white rounded-lg bg-(--alert-dark);
+    }
+
+    /****** Fim Alertas ******/
     /* Badges */
     .badge-primary {
-        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-blue-800 bg-blue-100
+        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-blue-800 bg-(--primary)
              border border-blue-200 dark:bg-blue-100 dark:border-blue-200;
     }
 
     .badge-info {
-        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-cyan-800 bg-cyan-100
+        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-cyan-800 bg-(--info)
             border border-cyan-300 dark:bg-cyan-100 dark:border-cyan-300;
     }
 
     .badge-success {
-        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-green-800 bg-green-100
+        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-green-800 bg-(--success)
             border border-green-300  dark:bg-green-100  dark:border-green-300;
     }
 
     .badge-warning {
-        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-yellow-800 bg-yellow-100
+        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-yellow-800 bg-(--warning)
             border border-yellow-300 dark:bg-yellow-100 dark:border-yellow-300;
     }
 
     .badge-danger {
-        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-red-800 bg-red-100
+        @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-red-800 bg-(--danger)
             border border-red-200 dark:bg-red-100 dark:border-red-200;
     }
 
@@ -424,7 +523,7 @@
 
     /* "Thumb" do botão deslizante */
     .theme-toggle-thumb {
-        @apply absolute top-0.5 left-0.5 w-7 h-7 bg-white  dark:bg-(--cor-dark-primary) rounded-full shadow-md
+        @apply absolute top-0.5 left-0.5 w-7 h-7 bg-white  dark:bg-(--dark-primary) rounded-full shadow-md
             transition-all duration-300 transform;
     }
 

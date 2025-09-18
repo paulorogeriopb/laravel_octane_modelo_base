@@ -1,37 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Suas variáveis globais */
 :root {
-    --cor-padrao: #32a2b9;
-    --cor-primary: #32a2b9;
-    --cor-primary-secondary: #298ba1;
-    --cor-dark-primary: #1d232a;
-    --cor-dark-secondary: #191e24;
-    --cor-dark-tertiary: #14191f;
-    --cor-light-primary: #f4f6f9;
-    --cor-light-secondary: #ebeef4;
-    --cor-light-tertiary: #d8dee9;
-    --cor-success: #45b977;
-    --cor-success-secondary: #3fa56e;
-    --cor-info: #60bbcd;
-    --cor-info-secondary: #4ab3c6;
-    --cor-warning: #dfa300;
-    --cor-warning-secondary: #c18f00;
-    --cor-danger: #dd4c6a;
-    --cor-danger-secondary: #b43c54;
-    --cor-sombra: #191e24;
-    --cor-table-header: #15191e;
+    --default: #32a2b9;
+    --escuro: #276377;
+    --default-primary: #32a2b9;
+    --primary-secondary: #298ba1;
+    --dark-primary: #1d232a;
+    --dark-secondary: #191e24;
+    --dark-tertiary: #14191f;
+    --light-primary: #fafbfc;
+    --light-secondary: #f4f6f9;
+    --light-tertiary: #d8dee9;
+    --success: #45b977;
+    --success-secondary: #3fa56e;
+    --info: #60bbcd;
+    --info-secondary: #4ab3c6;
+    --warning: #dfa300;
+    --warning-secondary: #c18f00;
+    --danger: #dd4c6a;
+    --danger-secondary: #b43c54;
+    --sombra: #191e24;
+    --table-header: #15191e;
     --color-athens-gray-400: #a0aec0;
-    --cor-table-hover: #15191e;
-    --cor-table-line: #323d48;
-    --cor-claro: #4ab3c6;
-    --cor-escuro: #276377;
+    --table-hover: #15191e;
+    --table-line: #323d48;
+    --claro: #4ab3c6;
+    --escuro: #276377;
 }
 
 @layer components {
@@ -39,11 +36,11 @@
         @apply text-2xl;
     }
     .bg-login {
-        @apply min-h-screen flex flex-col justify-center items-center bg-(--cor-light-secondary) dark:bg-(--cor-dark-secondary);
+        @apply min-h-screen flex flex-col justify-center items-center bg-(--light-secondary) dark:bg-(--dark-secondary);
     }
 
     .card-login {
-        @apply mt-6 w-full overflow-hidden px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary);
+        @apply mt-6 w-full overflow-hidden px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg bg-(--light-primary) dark:bg-(--dark-primary);
     }
 
     .logo-wrapper-login {
@@ -55,7 +52,7 @@
     }
 
     .title-logo {
-        @apply text-4xl font-semibold text-center text-(--cor-padrao);
+        @apply text-4xl font-semibold text-center text-(--default);
     }
 
     .title-login {
@@ -70,21 +67,21 @@
         @apply mt-4 flex items-center justify-between;
     }
 
-    .link-padrao {
-        @apply text-base hover:no-underline text-(--cor-escuro) dark:text-(--cor-claro);
+    .link-default {
+        @apply text-base hover:no-underline text-(--escuro) dark:text-(--default);
     }
 
     .bg-dashboard {
-        @apply bg-(--cor-light-secondary) dark:bg-(--cor-dark-secondary);
+        @apply bg-(--light-secondary) dark:bg-(--dark-secondary);
     }
 
     .navbar {
-        @apply bg-(--cor-light-secondary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
-            dark:bg-(--cor-dark-primary) dark:border-(--cor-sombra);
+        @apply bg-(--light-secondary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
+            dark:bg-(--dark-primary) dark:border-(--sombra);
     }
 
     .menu-button {
-        @apply lg:hidden cursor-pointer text-(--cor-primary) ms-4 mt-1;
+        @apply lg:hidden cursor-pointer text-(--primary) ms-4 mt-1;
     }
 
     .navbar-container {
@@ -96,7 +93,7 @@
     }
 
     .dropdown-button {
-        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary) dark:text-gray-400;
+        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-400;
     }
 
     .dropdown-icon {
@@ -105,7 +102,7 @@
 
     /* Sidebar base (fechada) */
     .sidebar {
-        @apply fixed top-0 left-0 w-64 h-screen bg-white dark:bg-(--cor-dark-primary) shadow-md
+        @apply fixed top-0 left-0 w-64 h-screen bg-white dark:bg-(--dark-primary) shadow-md
            z-40 transform -translate-x-full opacity-0 pointer-events-none
            transition-all duration-300 ease-in-out;
     }
@@ -125,9 +122,7 @@
     /* Desktop: sidebar sempre visível, posicionamento relativo para layout natural */
     @media (min-width: 1024px) {
         .sidebar {
-            @apply sticky mt-2 top-0 h-screen opacity-100 transform-none pointer-events-auto;
-            /* sticky mantém ela visível e fixa só verticalmente, acompanhando a rolagem */
-            /* h-screen == 100vh */
+            @apply sticky mt-2 top-0 h-screen opacity-100 pointer-events-auto translate-x-0 transform-none;
         }
 
         .sidebar-close-button {
@@ -137,7 +132,7 @@
 
     /* Container e botão mantém seu estilo */
     .sidebar-container {
-        @apply relative h-full bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary);
+        @apply relative h-full bg-(--light-secondary) dark:bg-(--dark-primary);
     }
 
     .sidebar-close-button {
@@ -145,11 +140,11 @@
     }
 
     .sidebar-header {
-        @apply flex items-center space-x-2 pl-4 py-3 pt-4 dark:bg-(--cor-dark-primary);
+        @apply flex items-center space-x-2 pl-4 py-3 pt-4 dark:bg-(--dark-primary);
     }
 
     .sidebar-title {
-        @apply text-xl font-bold text-(--cor-padrao);
+        @apply text-xl font-bold text-(--default);
     }
 
     .sidebar-nav {
@@ -158,7 +153,7 @@
 
     .sidebar-link {
         @apply relative flex items-center space-x-3 px-5 py-3 text-sm text-gray-600
-               dark:text-gray-400 border-b border-gray-200 dark:border-(--cor-sombra)
+               dark:text-gray-400 border-b border-gray-200 dark:border-(--sombra)
                font-light;
     }
 
@@ -170,11 +165,11 @@
 
     .sidebar-link:hover,
     .sidebar-link:focus {
-        @apply text-(--cor-padrao)  shadow-sm rounded-r-md bg-(--cor-light-secondary) dark:shadow-sm dark:bg-(--cor-sombra);
+        @apply text-(--default)  shadow-sm rounded-r-md bg-(--light-secondary) dark:shadow-sm dark:bg-(--sombra);
     }
 
     .sidebar-link.active {
-        @apply bg-(--cor-light-secondary) font-normal dark:bg-(--cor-dark-secondary) text-(--cor-padrao) dark:shadow-md shadow-sm rounded-r-md;
+        @apply bg-(--light-secondary) font-normal dark:bg-(--dark-secondary) text-(--default) dark:shadow-md shadow-sm rounded-r-md;
     }
 
     .size-5 {
@@ -197,20 +192,16 @@
         @apply text-xl font-semibold text-gray-500 dark:text-gray-400;
     }
 
-    .link-padrao {
-        @apply text-base hover:no-underline text-(--cor-escuro) dark:text-(--cor-claro);
-    }
-
     .breadcrumb {
         @apply text-sm text-gray-400 dark:text-gray-600;
     }
 
     .link-breadcrumb {
-        @apply text-sm hover:underline text-(--cor-escuro) dark:text-(--cor-claro);
+        @apply text-sm hover:underline text-(--escuro) dark:text-(--default);
     }
 
     .content-box {
-        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--cor-light-secondary) dark:bg-(--cor-dark-primary) dark:text-gray-200;
+        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-200;
     }
 
     .box {
@@ -218,7 +209,7 @@
     }
 
     .content-box-header {
-        @apply flex justify-between items-center border-b-2 pb-2 mb-3 border-gray-200 dark:border-(--cor-sombra);
+        @apply flex justify-between items-center border-b-2 pb-2 mb-3 border-gray-200 dark:border-(--sombra);
     }
 
     .content-box-title {
@@ -234,19 +225,19 @@
     }
 
     .table-container {
-        @apply overflow-hidden shadow-sm bg-white dark:bg-(--cor-dark-secondary) border border-gray-200 dark:border-(--cor-sombra);
+        @apply overflow-hidden shadow-sm bg-white dark:bg-(--dark-secondary) border border-gray-200 dark:border-(--sombra);
     }
 
     .table {
-        @apply min-w-full divide-y divide-gray-200 border-separate border-spacing-0 dark:border-(--cor-sombra);
+        @apply min-w-full divide-y divide-gray-200 border-separate border-spacing-0 dark:border-(--sombra);
     }
 
     .table-row-header {
-        @apply bg-(--cor-light-secondary) dark:bg-(--cor-dark-tertiary);
+        @apply bg-(--light-secondary) dark:bg-(--dark-tertiary);
     }
 
     .table-header {
-        @apply px-6 py-3 text-left text-sm font-medium tracking-wider border-b border-gray-200 dark:border-(--cor-sombra)
+        @apply px-6 py-3 text-left text-sm font-medium tracking-wider border-b border-gray-200 dark:border-(--sombra)
             text-gray-500 dark:text-(--color-athens-gray-400);
     }
 
@@ -255,15 +246,15 @@
     }
 
     .table-body {
-        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--cor-sombra) text-gray-950 dark:text-(--color-athens-gray-400) break-all;
+        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--sombra) text-gray-950 dark:text-(--color-athens-gray-400) break-all;
     }
 
     .table-row-body {
-        @apply hover:bg-gray-50 dark:hover:bg-(--cor-table-hover);
+        @apply hover:bg-gray-50 dark:hover:bg-(--table-hover);
     }
 
     .table-actions {
-        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--cor-sombra) text-gray-950 dark:text-(--color-athens-gray-400)
+        @apply px-6 py-2 text-sm border-b border-gray-200 dark:border-(--sombra) text-gray-950 dark:text-(--color-athens-gray-400)
              justify-center items-center space-x-1 text-center table-cell;
     }
 
@@ -276,15 +267,15 @@
     }
 
     .table-zebra-light tr:nth-child(odd) {
-        @apply bg-gray-100 dark:bg-(--cor-dark-secondary);
+        @apply bg-gray-100 dark:bg-(--dark-secondary);
     }
 
     .table-zebra-light tr:nth-child(even) {
-        @apply bg-white dark:bg-(--cor-dark-tertiary);
+        @apply bg-white dark:bg-(--dark-tertiary);
     }
 
     .table-zebra-light tr:hover {
-        @apply bg-gray-200 dark:bg-(--cor-table-hover) cursor-pointer;
+        @apply bg-gray-200 dark:bg-(--table-hover) cursor-pointer;
     }
 
     .form-search {
@@ -297,7 +288,7 @@
 
     .form-input {
         @apply block w-full mt-1 h-12 border-gray-300 rounded-md shadow-sm
-            focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500 dark:border-gray-600;
+            focus:border-(--default) focus:ring-(--default) dark:bg-gray-800 text-gray-500 dark:border-gray-600;
     }
 
     .form-select-sm {
@@ -305,19 +296,19 @@
              rounded-md shadow-sm
             dark:bg-gray-800 dark:text-gray-300
             bg-white text-gray-700
-            focus:border-(--cor-padrao) focus:ring focus:ring-(--cor-padrao)
+            focus:border-(--default) focus:ring focus:ring-(--default)
             transition duration-150 ease-in-out;
     }
 
     .form-textarea {
         @apply block w-full mt-1  h-40 border-gray-300 rounded-md shadow-sm
-                     focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500
+                     focus:border-(--default) focus:ring-(--default) dark:bg-gray-800 text-gray-500
                        dark:border-gray-600;
     }
 
     .form-input-md {
         @apply block text-sm text-center h-8 border-gray-300 rounded-md shadow-sm
-                     focus:border-(--cor-padrao) focus:ring-(--cor-padrao) dark:bg-gray-800 text-gray-500
+                     focus:border-(--default) focus:ring-(--default) dark:bg-gray-800 text-gray-500
                        dark:border-gray-600;
     }
 
@@ -334,38 +325,38 @@
     }
 
     .btn-primary {
-        @apply inline-flex bg-(--cor-primary) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-primary-secondary);
+        @apply inline-flex bg-(--primary) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
+            hover:bg-(--primary-secondary);
     }
 
     .btn-primary-md {
-        @apply bg-(--cor-primary) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-primary-secondary);
+        @apply bg-(--primary) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
+            hover:bg-(--primary-secondary);
     }
 
     .btn-info {
-        @apply bg-(--cor-info) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-info-secondary);
+        @apply bg-(--info) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
+            hover:bg-(--info-secondary);
     }
 
     .btn-success {
-        @apply bg-(--cor-success) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-success-secondary);
+        @apply bg-(--success) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
+            hover:bg-(--success-secondary);
     }
 
     .btn-warning {
-        @apply inline-flex bg-(--cor-warning) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-warning-secondary);
+        @apply inline-flex bg-(--warning) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
+            hover:bg-(--warning-secondary);
     }
 
     .btn-danger {
-        @apply inline-flex bg-(--cor-danger) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
-             hover:bg-(--cor-danger-secondary);
+        @apply inline-flex bg-(--danger) text-white text-sm px-2 py-1 rounded transition-colors cursor-pointer
+             hover:bg-(--danger-secondary);
     }
 
     .btn-danger-md {
-        @apply bg-(--cor-danger) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
-            hover:bg-(--cor-danger-secondary);
+        @apply bg-(--danger) text-white text-base px-2 py-2 rounded transition-colors cursor-pointer
+            hover:bg-(--danger-secondary);
     }
 
     .align-icon-btn {
@@ -426,7 +417,7 @@
 
     /* "Thumb" do botão deslizante */
     .theme-toggle-thumb {
-        @apply absolute top-0.5 left-0.5 w-7 h-7 bg-white  dark:bg-(--cor-dark-primary) rounded-full shadow-md
+        @apply absolute top-0.5 left-0.5 w-7 h-7 bg-white  dark:bg-(--dark-primary) rounded-full shadow-md
             transition-all duration-300 transform;
     }
 

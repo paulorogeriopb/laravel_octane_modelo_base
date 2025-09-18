@@ -23,5 +23,19 @@
                 Verificar
             </button>
         </form>
+
+
+
+        <form action="{{ route('email-verification.send') }}" method="POST">
+            @csrf
+
+            <p class="mb-4">
+                Clique no botão abaixo para receber um código de verificação no seu e-mail.
+            </p>
+
+            <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-600 rounded hover:bg-blue-700">
+                Enviar Código
+            </button>
+        </form>
     </div>
 @endsection

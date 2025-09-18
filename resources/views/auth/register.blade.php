@@ -67,11 +67,11 @@
             <!-- fim do aviso de senha -->
 
             <div class="flex items-center justify-end mt-4 ">
-                <a class="link-padrao" href="{{ route('login') }}">
+                <a class="link-default" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <button type="submit" class="btn-primary-md ms-4">
+                <button type="submit" class="btn-default-md ms-4">
                     {{ __('Register') }}
                 </button>
             </div>
