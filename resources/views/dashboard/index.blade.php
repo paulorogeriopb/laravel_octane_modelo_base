@@ -22,14 +22,12 @@
         <!-- Inicio do conteudo -->
 
         <div class="flex flex-wrap justify-between w-full gap-4">
-            <div
-                class="flex-1 min-w-[300px]  bg-cor-light-secondary dark:bg-cor-dark-secondary rounded-lg shadow-lg border-cor-light-primary dark:border-cor-dark-primary p-4 border-2">
+            <div class="flex-1 min-w-[300px] box-cont ">
                 <canvas id="barChart" class="w-full h-72"></canvas>
             </div>
 
 
-            <div
-                class="flex-1 min-w-[300px]  bg-cor-light-secondary dark:bg-cor-dark-secondary rounded-lg shadow-lg border-cor-light-primary dark:border-cor-dark-primary p-4 border-2">
+            <div class="flex-1 min-w-[300px] box-cont">
                 <canvas id="lineChart" class="w-full h-72"></canvas>
             </div>
         </div>

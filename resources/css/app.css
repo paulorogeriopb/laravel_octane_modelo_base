@@ -69,7 +69,7 @@
     }
 
     .logo-login {
-        @apply h-20 w-20;
+        @apply h-14 w-auto;
     }
 
     .title-logo {
@@ -93,7 +93,7 @@
     }
 
     .link-default {
-        @apply text-base hover:text-(--dark-primary)  text-(--default);
+        @apply text-base hover:text-(--default-secondary)  text-(--default);
     }
 
     .bg-dashboard {
@@ -235,6 +235,10 @@
         @apply shadow-lg text-gray-900 p-4 sm:rounded-lg bg-slate-500 dark:text-gray-200;
     }
 
+    .box-cont {
+        @apply bg-(--light-secondary) dark:bg-(--dark-secondary) rounded-lg shadow-lg border-(--light-primary) dark:border-(--dark-primary) p-4 border-2;
+    }
+
     .content-box-header {
         @apply flex justify-between items-center border-b-2 pb-2 mb-3 border-gray-200 dark:border-(--sombra);
     }
@@ -302,7 +306,7 @@
     }
 
     .table-zebra-light tr:hover {
-        @apply bg-gray-200 dark:bg-(--table-hover) cursor-pointer;
+        @apply bg-gray-200 dark:bg-(--dark-primary) cursor-pointer;
     }
 
     .form-search {

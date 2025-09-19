@@ -1,8 +1,14 @@
-@extends('layouts.site')
+@extends('layouts.guest')
 
 @section('content')
-    <div class="max-w-md p-6 mx-auto mt-12 bg-white rounded shadow">
-        <h1 class="mb-4 text-xl font-bold">Verificação de E-mail</h1>
+    <div class="card-login">
+
+        @include('components.application-logo')
+
+        <x-alert />
+
+
+        <h1 class="title-login">Verificação de E-mail</h1>
 
         @if (session('success'))
             <div class="p-2 mb-4 text-green-800 bg-green-100 rounded">
@@ -12,16 +18,25 @@
 
         <form action="{{ route('email-verification.verify') }}" method="POST">
             @csrf
-            <label class="block mb-2 font-medium">Digite o código recebido:</label>
-            <input type="text" name="code" class="w-full p-2 mb-4 border rounded" required>
 
-            @error('code')
-                <p class="mb-2 text-sm text-red-600">{{ $message }}</p>
-            @enderror
 
-            <button type="submit" class="w-full py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                Verificar
-            </button>
+
+            <div class="form-group-login">
+                <!--<label for="code" class="form-label">Digite o código recebido:</label> -->
+                <input id="code" type="text" name="code" placeholder="Digite o código recebido:" required autofocus
+                    autocomplete="username" class="form-input">
+                @error('code')
+                    <p class="mb-2 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
+
+
+
+            <div class="flex items-center justify-center mt-4">
+                <button type="submit" class="w-full py-2 mt-4rounded btn-default-md">
+                    Verificar</button>
+            </div>
         </form>
     </div>
 @endsection

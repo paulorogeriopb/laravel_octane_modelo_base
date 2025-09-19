@@ -16,7 +16,7 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app_auth.js'])
+    @vite(['resources/css/app.css', 'resources/js/app_auth.js', 'resources/js/app.js'])
 </head>
 
 <body class="bg-login">

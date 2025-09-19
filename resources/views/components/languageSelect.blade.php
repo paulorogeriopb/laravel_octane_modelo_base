@@ -18,13 +18,13 @@
             x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
             x-transition:leave-end="opacity-0 scale-75 -translate-y-2"
-            class="absolute z-50 mt-2 transform -translate-x-1/2 bg-white border border-gray-200 rounded-md shadow-lg left-1/2 top-full w-44 dark:bg-cor-dark-secondary dark:border-gray-600"
+            class="absolute z-50 mt-2 transform -translate-x-1/2 bg-white border border-gray-200 rounded-md shadow-lg dark:bg-gray-800 left-1/2 top-full w-44 dark:bg-cor-dark-secondary dark:border-gray-700"
             style="display: none;">
 
             <template x-for="lang in languages" :key="lang.code">
                 <label
-                    class="flex items-center px-3 py-2 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-cor-dark-primary"
-                    :class="{ 'bg-gray-100 dark:bg-cor-dark-primary': lang.code === selected.code }">
+                    class="flex items-center px-3 py-2 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                    :class="{ 'bg-gray-100 dark:bg-gray-700': lang.code === selected.code }">
 
                     <input type="radio" name="locale" :value="lang.code" class="hidden"
                         x-model="selected.code" />

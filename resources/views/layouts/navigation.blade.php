@@ -60,9 +60,9 @@
 
             <!-- Dropdown -->
             <div id="dropdownContent"
-                class="absolute z-50 hidden w-48 bg-white rounded-md shadow-lg mt-28 right-2 dark:bg-cor-dark-primary">
+                class="absolute z-50 hidden w-48 bg-white rounded-md shadow-lg dark:bg-gray-800 mt-28 right-2 dark:bg-cor-dark-primary">
                 <a href="{{ route('profile.edit') }}"
-                    class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-100 dark:border-cor-sombra dark:text-white hover:bg-gray-100 dark:hover:bg-cor-dark-secondary">Perfil</a>
+                    class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-100 dark:border-cor-sombra dark:text-gray-400 dark:hover:bg-gray-600 hover:bg-gray-100 ">Perfil</a>
 
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
