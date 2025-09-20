@@ -38,7 +38,7 @@
 
 <body class="bg-dashboard">
 
-    @include('layouts.navigation') {{-- sua navbar com h-20 fixed top-0 --}}
+    @include('components.navigation') {{-- sua navbar com h-20 fixed top-0 --}}
 
     <div class="flex flex-col sm:flex-row">
         @include('components.sidebar')

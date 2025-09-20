@@ -101,12 +101,12 @@
     }
 
     .navbar {
-        @apply bg-(--light-secondary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
+        @apply bg-(--light-primary) px-4 py-2 sm:px-6 shadow-md lg:px-8 border-b border-transparent dark:border-none
             dark:bg-(--dark-primary) dark:border-(--sombra);
     }
 
     .menu-button {
-        @apply lg:hidden cursor-pointer text-(--primary) ms-4 mt-1;
+        @apply lg:hidden cursor-pointer text-(--default)  ms-4 mt-1;
     }
 
     .navbar-container {
@@ -118,7 +118,7 @@
     }
 
     .dropdown-button {
-        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-400;
+        @apply px-6 py-2 text-sm text-gray-500 flex items-center cursor-pointer bg-(--light-primary) dark:bg-(--dark-primary) dark:text-gray-400;
     }
 
     .dropdown-icon {
@@ -127,7 +127,7 @@
 
     /* Sidebar base (fechada) */
     .sidebar {
-        @apply fixed top-0 left-0 w-64 h-screen bg-white dark:bg-(--dark-primary) shadow-md
+        @apply fixed top-0 left-0 w-64 h-screen bg-(--light-primary) dark:bg-(--dark-primary) shadow-md
            z-40 transform -translate-x-full opacity-0 pointer-events-none
            transition-all duration-300 ease-in-out;
     }
@@ -157,7 +157,7 @@
 
     /* Container e botão mantém seu estilo */
     .sidebar-container {
-        @apply relative h-full bg-(--light-secondary) dark:bg-(--dark-primary);
+        @apply relative h-full bg-(--light-primary) dark:bg-(--dark-primary);
     }
 
     .sidebar-close-button {
@@ -190,11 +190,11 @@
 
     .sidebar-link:hover,
     .sidebar-link:focus {
-        @apply text-(--default)  shadow-sm rounded-r-md bg-(--light-secondary) dark:shadow-sm dark:bg-(--sombra);
+        @apply text-(--default)   rounded-r-md bg-(--light-secondary) dark:shadow-sm dark:bg-(--sombra);
     }
 
     .sidebar-link.active {
-        @apply bg-gray-200 text-(--default) dark:bg-(--dark-secondary) dark:text-(--default)
+        @apply bg-(--light-secondary) text-(--default) dark:bg-(--dark-secondary) dark:text-(--default)
      shadow-xs;
     }
 
@@ -228,7 +228,7 @@
     }
 
     .content-box {
-        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--light-secondary) dark:bg-(--dark-primary) dark:text-gray-200;
+        @apply shadow-lg rounded-lg  text-gray-900 p-4 sm:rounded-lg bg-(--light-primary) dark:bg-(--dark-primary) dark:text-gray-200;
     }
 
     .box {
