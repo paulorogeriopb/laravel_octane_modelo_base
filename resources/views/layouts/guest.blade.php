@@ -16,12 +16,15 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app_auth.js', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app_auth.js', 'resources/js/app.js', 'resources/js/spinner.js'])
 </head>
 
 <body class="bg-login">
 
-
+    <div id="global-spinner"
+        class="fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 opacity-100 bg-white/20 backdrop-blur-sm">
+        <x-loading-spinner />
+    </div>
 
     @yield('content')
 

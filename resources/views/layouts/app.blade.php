@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/bootstrap.js', 'resources/js/app_auth.js', 'resources/js/no-alert.js'])
+    @vite(['resources/css/app.css', 'resources/js/bootstrap.js', 'resources/js/app_auth.js', 'resources/js/no-alert.js', 'resources/js/spinner.js'])
 
 
 
@@ -37,6 +37,11 @@
 
 
 <body class="bg-dashboard">
+    <div id="global-spinner"
+        class="fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 opacity-100 bg-white/20 backdrop-blur-sm">
+        <x-loading-spinner />
+    </div>
+
 
     @include('components.navigation') {{-- sua navbar com h-20 fixed top-0 --}}
 
