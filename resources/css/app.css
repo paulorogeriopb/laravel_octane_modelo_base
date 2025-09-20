@@ -69,7 +69,7 @@
     }
 
     .logo-login {
-        @apply h-14 w-auto;
+        @apply h-12 w-auto;
     }
 
     .title-logo {
@@ -125,6 +125,15 @@
         @apply ml-2 h-4 w-4;
     }
 
+    .dropdownContent-one {
+        @apply bg-(--light-primary) rounded-md shadow-lg dark:bg-(--dark-primary) mt-28 right-2  w-48;
+    }
+
+    .dropdown-item {
+        @apply block px-4 py-2 text-sm text-gray-500 border-b border-gray-200 dark:border-(--sombra)
+         dark:text-gray-400 hover:text-(--default) dark:hover:bg-(--dark-secondary) hover:bg-(--light-secondary);
+    }
+
     /* Sidebar base (fechada) */
     .sidebar {
         @apply fixed top-0 left-0 w-64 h-screen bg-(--light-primary) dark:bg-(--dark-primary) shadow-md
@@ -165,7 +174,7 @@
     }
 
     .sidebar-header {
-        @apply flex items-center space-x-2 pl-4 py-3 pt-4 dark:bg-(--dark-primary);
+        @apply flex items-center space-x-2  py-3 pt-4;
     }
 
     .sidebar-title {

@@ -6,8 +6,7 @@
 
         <div class="sidebar-header">
             <span class="sidebar-title">
-                <a href="{{ route('dashboard') }}" title="{{ config('app.name', 'Laravel') }}">
-                    {{ config('app.name', 'Laravel') }}</a>
+                <img src="{{ asset('images/logo/logo-v.png') }}" alt="Nimbuns" class="h-7">
             </span>
         </div>
 
@@ -59,14 +58,12 @@
             </button>
 
             <!-- Dropdown -->
-            <div id="dropdownContent"
-                class="absolute z-50 hidden w-48 bg-white rounded-md shadow-lg dark:bg-gray-800 mt-28 right-2 dark:bg-cor-dark-primary">
-                <a href="{{ route('profile.edit') }}"
-                    class="block px-4 py-2 text-sm text-gray-700 border-b border-gray-100 dark:border-cor-sombra dark:text-gray-400 dark:hover:bg-gray-600 hover:bg-gray-100 ">Perfil</a>
+            <div id="dropdownContent" class="absolute z-50 hidden dropdownContent-one">
+                <a href="{{ route('profile.edit') }}" class="dropdown-item">Perfil</a>
 
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    class="relative flex items-center px-4 py-2 space-x-3 text-sm text-red-500 bg-red-50 hover:bg-red-100 hover:text-red-700 dark:text-red-500 dark:bg-cor-dark-primary dark:hover:hover:bg-cor-dark-secondary dark:hover:text-red-600">
+                    class="relative flex items-center px-4 py-2 space-x-3 dropdown-item">
                     <!-- Ícone arrow-right-circle (Heroicons) -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-4">
