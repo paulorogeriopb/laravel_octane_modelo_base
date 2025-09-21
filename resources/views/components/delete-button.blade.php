@@ -2,14 +2,13 @@
     'route',
     'id',
     'text' => 'Apagar',
-    'classes' => 'items-center hidden space-x-1 form-delete btn-light md:flex',
+    'classes' => 'items-center hidden space-x-1  btn-light md:flex cursor-pointer',
 ])
 
-<form action="{{ route($route, $id) }}" method="POST" {{ $attributes->merge(['class' => $classes]) }}
-    data-id="{{ $id }}">
+<form action="{{ route($route, $id) }}" method="POST" data-id="{{ $id }}" class="form-delete">
     @csrf
     @method('DELETE')
-    <button type="submit" class="flex items-center space-x-1 cursor-pointer">
+    <button type="submit" {{ $attributes->merge(['class' => $classes]) }}>
         <!-- Ícone trash (Heroicons) -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-5">
