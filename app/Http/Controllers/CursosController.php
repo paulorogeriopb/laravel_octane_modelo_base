@@ -30,12 +30,13 @@ class CursosController extends Controller
                 })
             )
                 ->orderBy('id', 'DESC')
-                ->paginate(4)
+                ->paginate(15)
                 ->withQueryString();
 
-            //  $data = Curso::orderBy('created_at', 'desc')->paginate(15);
+            // $data = Curso::orderBy('created_at', 'desc')->paginate(2);
 
             return view($this->view.'.index', ['data' => $data]);
+
         } catch (Exception $exception) {
             $this->logError('Erro ao listar cursos', $exception);
 

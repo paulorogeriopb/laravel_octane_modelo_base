@@ -31,6 +31,7 @@
             'route' => route('translations.store'),
             'method' => 'POST',
             'data' => null,
+            'buttonText' => __('mensagens.save'),
         ])
     </div>
 @endsection

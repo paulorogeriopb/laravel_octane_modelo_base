@@ -3,7 +3,7 @@
         value="{{ request('search') }}" required />
 
     <div class="flex gap-2">
-        <button type="submit" class="flex items-center justify-center h-10 gap-1 px-4 mt-1 btn-primary">
+        <button type="submit" class="flex items-center justify-center h-10 gap-1 px-4 mt-1 btn-default">
             <!-- Ícone de lupa -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-5">

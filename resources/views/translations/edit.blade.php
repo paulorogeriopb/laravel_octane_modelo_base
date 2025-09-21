@@ -31,6 +31,7 @@
             'route' => route('translations.update', $data->id),
             'method' => 'PUT',
             'data' => $data,
+            'buttonText' => __('mensagens.update'),
         ])
     </div>
 @endsection

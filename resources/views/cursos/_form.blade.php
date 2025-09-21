@@ -15,7 +15,5 @@
         @enderror
     </div>
 
-    <button type="submit" class="btn-success">
-        {{ $method === 'PUT' ? 'Atualizar ' : 'Criar ' }}
-    </button>
+    @include('components.save-button')
 </form>

@@ -26,7 +26,7 @@
                 value="{{ request('date_to') }}" />
 
             <div class="flex w-full gap-2 md:w-auto">
-                <button type="submit" class="flex items-center justify-center h-10 gap-1 px-4 mt-1 btn-primary">
+                <button type="submit" class="flex items-center justify-center h-10 gap-1 px-4 mt-1 btn-default">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"

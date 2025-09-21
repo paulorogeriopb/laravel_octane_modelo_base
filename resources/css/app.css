@@ -7,6 +7,8 @@
     --font-sans: "Figtree", sans-serif;
     --default: #298ba1;
     --default-secondary: #32a2b9;
+    --default-tertiary: #d9ebee;
+    --default-quaternary: #e6f1f4;
 
     --dark-primary: #1d232a;
     --dark-secondary: #191e24;
@@ -265,7 +267,7 @@
     }
 
     .table-container {
-        @apply overflow-hidden shadow-sm bg-white dark:bg-(--dark-secondary) border border-gray-200 dark:border-(--sombra);
+        @apply overflow-visible shadow-sm bg-white dark:bg-(--dark-secondary) border border-gray-200 dark:border-(--sombra);
     }
 
     .table {
@@ -553,5 +555,29 @@
     /* Ícone Sol (modo escuro) */
     .theme-icon-sun {
         @apply absolute w-5 h-5 text-yellow-500 top-1 left-1 hidden dark:block;
+    }
+
+    /*** Início da paginação ******/
+
+    .pagination {
+        @apply flex items-center justify-center mt-4 space-x-2;
+    }
+
+    .pagination-btn {
+        @apply px-3 py-1 text-gray-400 dark:text-gray-600 bg-(--light-primary) dark:bg-(--dark-primary) rounded;
+    }
+
+    .pagination-btn-hover {
+        @apply px-3 py-1 text-(--default) rounded bg-(--light-secondary) dark:bg-(--dark-secondary) hover:bg-(--light-tertiary) dark:hover:bg-(--dark-tertiary);
+    }
+
+    .pagination-btn-active {
+        @apply px-3 py-1 font-bold text-white bg-(--default) rounded;
+    }
+
+    /*** Fim da paginação ******/
+
+    .btn-action-mobile {
+        @apply absolute bg-(--light-primary) rounded-lg shadow-lg w-44 dark:bg-(--dark-primary) z-50 overflow-hidden;
     }
 }

@@ -39,7 +39,6 @@
         @endforeach
     </div>
 
-    <button type="submit" class="mt-5 btn-success">
-        {{ $method === 'PUT' ? 'Atualizar' : 'Criar' }}
-    </button>
+
+    @include('components.save-button')
 </form>
