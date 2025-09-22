@@ -580,4 +580,10 @@
     .btn-action-mobile {
         @apply absolute bg-(--light-primary) rounded-lg shadow-lg w-44 dark:bg-(--dark-primary) z-50 overflow-hidden;
     }
+
+    .btn-code {
+        @apply flex items-center justify-center h-16 text-2xl font-bold text-center
+           border border-(--light-tertiary) rounded w-15 text-(--default)
+           focus:border-(--default) focus:outline-none transition-colors duration-200;
+    }
 }

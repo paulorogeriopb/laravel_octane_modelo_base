@@ -26,25 +26,29 @@
                     Para continuar, utilize o código abaixo:
                 </p>
 
+
+
+
                 <div style="text-align: center; margin: 20px 0;">
+                    <!-- Código destacado -->
                     <span
-                        style="display: inline-block; font-size: 36px; letter-spacing: 3px; padding: 12px 24px; background-color: #f0f4f8; border-radius: 6px; font-weight: bold; color: #32a2b9;">
+                        style="display: inline-block; font-size: 36px; letter-spacing: 3px; padding: 12px 24px;
+                 background-color: #f0f4f8; border-radius: 6px; font-weight: bold; color: #32a2b9;">
                         {{ $code }}
                     </span>
-                </div>
-
-                <p style="font-size: 15px; line-height: 1.5; margin-bottom: 20px;">
-                    Não se preocupe se você ainda não redefiniu sua senha ou perdeu o link. Basta clicar no botão abaixo
-                    e digitar o código de segurança para continuar.
-                </p>
+                    <p style="font-size: 14px; color: #555; margin-top: 8px;">
+                        Copie manualmente este código ou clique no botão abaixo
+                    </p>
 
 
-                <div style="text-align: center; margin: 20px 0;">
+                    <!-- Botão que leva direto para a URL -->
                     <a href="{{ $url }}"
-                        style="display: inline-block; padding: 12px 24px; background-color: #32a2b9; color: #fff; border-radius: 6px; text-decoration: none; font-weight: bold;">
+                        style="display: inline-block; padding: 12px 24px; background-color: #32a2b9; color: #fff;
+              border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 10px;">
                         Redefinir minha senha
                     </a>
                 </div>
+
 
                 <p style="font-size: 14px; color: #555;">
                     Este código expira em <strong>{{ $formattedDate }}</strong> às

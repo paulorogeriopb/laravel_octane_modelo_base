@@ -24,13 +24,14 @@
                     Estamos quase lá para ativar sua conta.
                     Use o código abaixo para confirmar seu e-mail:
                 </p>
-
                 <div style="text-align: center; margin: 20px 0;">
-                    <span
-                        style="display: inline-block; font-size: 36px; letter-spacing: 3px; padding: 12px 24px;
-                        background-color: #f0f4f8; border-radius: 6px; font-weight: bold; color: #32a2b9;">
+                    <span id="copy-code"
+                        style="display: inline-block; font-size: 36px; letter-spacing: 3px; padding: 12px 24px; background-color: #f0f4f8; border-radius: 6px; font-weight: bold; color: #32a2b9; cursor: pointer;"
+                        title="Clique para copiar o código"
+                        onclick="navigator.clipboard.writeText('{{ $code }}').then(()=>alert('Código copiado!'));">
                         {{ $code }}
                     </span>
+                    <p style="font-size: 14px; color: #555; margin-top: 8px;">Clique no código para copiar</p>
                 </div>
 
                 <div style="text-align: center; margin: 20px 0;">

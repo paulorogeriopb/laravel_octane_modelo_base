@@ -51,7 +51,7 @@ class EmailVerificationCodeController extends Controller
 
        // Define expiração e url
         $expiresAt = now()->addMinutes(60);
-        $url = route('email-verification.form');
+       $url = route('email-verification.form') . '?email=' . urlencode($user->email) . '&code=' . $code;
 
         // Salva código hash no banco
         VerificationCode::create([
@@ -80,7 +80,7 @@ class EmailVerificationCodeController extends Controller
     /**
      * Exibe o formulário para digitar o código
      */
-    public function showVerificationForm()
+    public function showVerificationForm(Request $request)
     {
         $user = Auth::user();
 
@@ -92,7 +92,10 @@ class EmailVerificationCodeController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('auth.verify-email');
+         return view('auth.verify-email', [
+            'email' => $request->query('email'),
+            'code'  => $request->query('code'),
+        ]);
     }
 
     /**
@@ -104,7 +107,7 @@ class EmailVerificationCodeController extends Controller
 
         if (!$user) {
             return redirect()->route('login')
-                ->withErrors(['email' => 'Você precisa estar logado para verificar o e-mail.']);
+                ->withErrors(['email' => 'Você precisa estar logado para verificar o código.']);
         }
 
         $request->validate([

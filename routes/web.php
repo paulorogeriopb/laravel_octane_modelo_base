@@ -37,10 +37,15 @@ Route::middleware('guest')->group(function () {
         ->name('password.code.send');
     Route::get('reset-password-code', [ForgotPasswordCodeController::class, 'verifyForm'])
         ->name('password.code.form');
+
+    // Validação do código (POST)
+    Route::post('validate-code', [ForgotPasswordCodeController::class, 'validateCode'])
+        ->name('password.code.validate');
+
+    // Reset de senha
     Route::post('reset-password-code', [ForgotPasswordCodeController::class, 'resetPassword'])
         ->name('password.code.reset');
 });
-
 
 
 /*
