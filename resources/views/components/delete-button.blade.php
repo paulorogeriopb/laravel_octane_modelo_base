@@ -20,7 +20,6 @@
 </form>
 
 
-
 @push('scripts')
     @vite('resources/js/alert-delete.js')
 @endpush
