@@ -49,12 +49,17 @@ class EmailVerificationCodeController extends Controller
         // Gera código aleatório
         $code = mt_rand(100000, 999999);
 
+       // Define expiração e url
+        $expiresAt = now()->addMinutes(60);
+        $url = route('email-verification.form');
+
         // Salva código hash no banco
         VerificationCode::create([
             'user_id' => $user->id,
             'type' => 'email_verification', // IMPORTANTE: define o tipo
             'code_hash' => Hash::make($code),
-            'expires_at' => now()->addMinutes(60),
+            'expires_at'=> $expiresAt,
+
         ]);
 
         \Log::info('Código gerado para verificação', ['user_id' => $user->id, 'code' => $code]);
@@ -65,7 +70,7 @@ class EmailVerificationCodeController extends Controller
             $code,
             now()->addMinutes(60)->format('d/m/Y'),
             now()->addMinutes(60)->format('H:i'),
-            route('email-verification.form')
+            $url,
         ));
 
         return redirect()->route('email-verification.form')

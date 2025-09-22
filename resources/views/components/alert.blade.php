@@ -9,6 +9,12 @@
             'info' => session()->pull('info'),
             'status' => session()->pull('status'),
         ];
+
+        // Captura o primeiro erro do validator
+        if (!$sessionMessages['error'] && $errors->any()) {
+            $sessionMessages['error'] = collect($errors->all())->first();
+        }
+
         foreach ($sessionMessages as $key => $msg) {
             if ($msg) {
                 $type = $key;

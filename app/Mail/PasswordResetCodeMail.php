@@ -12,13 +12,15 @@ class PasswordResetCodeMail extends Mailable
 
     public $user;
     public $code;
+    public $url;
     public $formattedDate;
     public $formattedTime;
 
-    public function __construct($user, string $code, string $formattedDate, string $formattedTime)
+    public function __construct($user, string $code, string $url, string $formattedDate, string $formattedTime)
     {
         $this->user = $user;
         $this->code = $code;
+        $this->url = $url;
         $this->formattedDate = $formattedDate;
         $this->formattedTime = $formattedTime;
     }

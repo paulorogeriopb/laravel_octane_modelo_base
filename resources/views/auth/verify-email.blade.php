@@ -8,7 +8,8 @@
         <x-alert />
 
 
-        <h1 class="title-login">Verificação de E-mail</h1>
+        <h1 class="title-login">Verificação de Código</h1>
+        <p class="title-subtitle">Verificação de Código</p>
 
         @if (session('success'))
             <div class="p-2 mb-4 text-green-800 bg-green-100 rounded">
@@ -23,8 +24,8 @@
 
             <div class="form-group-login">
                 <!--<label for="code" class="form-label">Digite o código recebido:</label> -->
-                <input id="code" type="text" name="code" placeholder="Digite o código recebido:" required autofocus
-                    autocomplete="username" class="form-input">
+                <input id="code" type="text" name="code" placeholder="Digite o código recebido:" required
+                    autofocus autocomplete="username" class="form-input">
                 @error('code')
                     <p class="mb-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
