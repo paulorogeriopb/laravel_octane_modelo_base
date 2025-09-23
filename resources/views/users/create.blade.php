@@ -12,9 +12,7 @@
         <div class="content-box-header">
             <h3 class="content-box-title">{{ __('mensagens.create_new') }}</h3>
             <div class="content-box-btn">
-                @can('users-list')
-                    @include('components.list-button')
-                @endcan
+                <x-list-button base-route="users" />
             </div>
         </div>
 

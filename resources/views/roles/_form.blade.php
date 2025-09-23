@@ -13,7 +13,5 @@
             required>
     </div>
 
-    <button type="submit" class="btn-success">
-        {{ $method === 'PUT' ? 'Atualizar ' : 'Criar ' }}
-    </button>
+    <x-save-button />
 </form>

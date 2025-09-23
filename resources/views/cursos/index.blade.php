@@ -12,18 +12,13 @@
         <div class="content-box-header">
             <h3 class="content-box-title">{{ __('mensagens.list') }}</h3>
             <div class="content-box-btn">
-                @can('cursos.create')
-                    @include('components.create-button')
-                @endcan
+                <x-create-button base-route="cursos" />
             </div>
         </div>
 
-        @include('components.search-forms')
-
+        <x-search-form base-route="cursos" placeholder="Buscar Curso..." />
 
         <x-alert />
-
-
 
         @if ($data->isNotEmpty())
             <!-- Tabela -->
@@ -59,10 +54,6 @@
         <div class="mt-4">
             {{ $data->links() }}
         </div>
-
-
     </div>
-
-
 
 @endsection

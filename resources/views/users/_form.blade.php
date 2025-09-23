@@ -91,6 +91,6 @@
         @endcan
     @endif
 
-    @include('components.save-button')
+    <x-save-button />
 
 </form>

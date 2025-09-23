@@ -12,7 +12,5 @@
         <input type="text" id="name" name="name" class="form-input" value="{{ old('name', $data->name ?? '') }}">
     </div>
 
-    <button type="submit" class="btn-success">
-        {{ $method === 'PUT' ? 'Atualizar ' : 'Criar ' }}
-    </button>
+    <x-save-button />
 </form>
