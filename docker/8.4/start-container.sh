@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 # -----------------------------
@@ -11,10 +10,13 @@ if [ "$SUPERVISOR_PHP_USER" != "root" ] && [ "$SUPERVISOR_PHP_USER" != "sail" ];
 fi
 
 # -----------------------------
-# Ajusta UID do sail
+# Ajusta UID/GID do sail dinamicamente
 # -----------------------------
 if [ ! -z "$WWWUSER" ]; then
-    usermod -u $WWWUSER sail
+    usermod -u "$WWWUSER" sail
+fi
+if [ ! -z "$WWWGROUP" ]; then
+    groupmod -o -g "$WWWGROUP" sail || true
 fi
 
 # -----------------------------
@@ -24,20 +26,33 @@ mkdir -p /.composer
 chmod -R ugo+rw /.composer
 
 # -----------------------------
-# Ajustes Laravel e Composer
+# Ajustes Laravel e permissões
 # -----------------------------
 chown -R sail:$WWWGROUP /var/www/html
-chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
-chown -R sail:sail /var/www/html/node_modules
+chmod -R 775 \
+    /var/www/html/storage \
+    /var/www/html/bootstrap/cache \
+    /var/www/html/public
 
-# Remove locks do Octane
+# Só aplica se node_modules já existir
+if [ -d "/var/www/html/node_modules" ]; then
+    chown -R sail:sail /var/www/html/node_modules
+fi
+
+# -----------------------------
+# Limpa locks do Octane (se houver)
+# -----------------------------
 rm -f /var/www/html/storage/octane/*.lock || true
 pkill -f "artisan octane:start" || true
 
+# -----------------------------
 # Instala dependências do Composer
+# -----------------------------
 if [ ! -d /var/www/html/vendor ]; then
     echo "Instalando dependências do Composer..."
     gosu sail composer install --no-interaction --optimize-autoloader --no-dev
+else
+    echo "Dependências do Composer já instaladas."
 fi
 
 # -----------------------------
@@ -47,6 +62,8 @@ cd /var/www/html
 if [ ! -d node_modules ]; then
     echo "Instalando dependências Node..."
     gosu sail npm install
+else
+    echo "Dependências Node já instaladas."
 fi
 
 # -----------------------------
