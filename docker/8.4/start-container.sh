@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -e
 
 # -----------------------------
@@ -10,13 +11,10 @@ if [ "$SUPERVISOR_PHP_USER" != "root" ] && [ "$SUPERVISOR_PHP_USER" != "sail" ];
 fi
 
 # -----------------------------
-# Ajusta UID/GID do sail dinamicamente
+# Ajusta UID do sail
 # -----------------------------
 if [ ! -z "$WWWUSER" ]; then
-    usermod -u "$WWWUSER" sail
-fi
-if [ ! -z "$WWWGROUP" ]; then
-    groupmod -o -g "$WWWGROUP" sail || true
+    usermod -u $WWWUSER sail
 fi
 
 # -----------------------------
@@ -26,33 +24,20 @@ mkdir -p /.composer
 chmod -R ugo+rw /.composer
 
 # -----------------------------
-# Ajustes Laravel e permissões
+# Ajustes Laravel e Composer
 # -----------------------------
 chown -R sail:$WWWGROUP /var/www/html
-chmod -R 775 \
-    /var/www/html/storage \
-    /var/www/html/bootstrap/cache \
-    /var/www/html/public
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
+chown -R sail:sail /var/www/html/node_modules
 
-# Só aplica se node_modules já existir
-if [ -d "/var/www/html/node_modules" ]; then
-    chown -R sail:sail /var/www/html/node_modules
-fi
-
-# -----------------------------
-# Limpa locks do Octane (se houver)
-# -----------------------------
+# Remove locks do Octane
 rm -f /var/www/html/storage/octane/*.lock || true
 pkill -f "artisan octane:start" || true
 
-# -----------------------------
 # Instala dependências do Composer
-# -----------------------------
 if [ ! -d /var/www/html/vendor ]; then
     echo "Instalando dependências do Composer..."
     gosu sail composer install --no-interaction --optimize-autoloader --no-dev
-else
-    echo "Dependências do Composer já instaladas."
 fi
 
 # -----------------------------
@@ -62,8 +47,6 @@ cd /var/www/html
 if [ ! -d node_modules ]; then
     echo "Instalando dependências Node..."
     gosu sail npm install
-else
-    echo "Dependências Node já instaladas."
 fi
 
 # -----------------------------
@@ -77,6 +60,23 @@ elif [ "$APP_ENV" = "production" ]; then
     gosu sail npm run build
 fi
 
+# Remove locks do Octane
+rm -f /var/www/html/storage/octane/*.lock || true
+pkill -f "artisan octane:start" || true
+
+
+
+# -----------------------------
+# Exporta variáveis do .env de forma segura
+# -----------------------------
+if [ -f /var/www/html/.env ]; then
+    set -a
+    # Ignora linhas comentadas e vazias
+    grep -v -E '^\s*#|^\s*$' /var/www/html/.env | sed 's/\r//g' > /tmp/env_vars
+    # Fonte do arquivo para exportar variáveis
+    . /tmp/env_vars
+    set +a
+fi
 # -----------------------------
 # Inicia supervisord
 # -----------------------------
